@@ -1,7 +1,9 @@
 .info__button{
+    all: unset;
     background-image: url(../../../../ìmages/element__botton.svg);
     width: 22px;
     height: 19px;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
