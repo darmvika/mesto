@@ -1,0 +1,8 @@
+.group {
+    width: 88%;
+    margin: auto;
+    padding-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+}

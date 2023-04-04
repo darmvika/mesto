@@ -1,0 +1,16 @@
+.profile__button {
+    all: unset;
+    background-image: url(../../../ìmages/+.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    min-width: 282px;
+    min-height: 50px;
+    margin-top: 36px;
+}
+
+.profile__button:hover{
+    color:#FFFFFF;
+    opacity: 60%;
+}
