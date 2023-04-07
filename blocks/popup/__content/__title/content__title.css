@@ -1,0 +1,21 @@
+.content__title {
+    width: 84%;
+    margin: 0 auto ;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 25px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .content__title {
+        margin: auto;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+}

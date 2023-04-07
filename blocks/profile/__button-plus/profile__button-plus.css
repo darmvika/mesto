@@ -1,4 +1,4 @@
-.profile__button {
+.profile__button-plus {
     all: unset;
     background-image: url(../../../ìmages/+.svg);
     max-width: 100%;
@@ -11,13 +11,13 @@
 
 }
 
-.profile__button:hover {
+.profile__button-plus:hover {
     opacity: 60%;
 }
 
 @media screen and (min-width: 768px) {
 
-    .profile__button {
+    .profile__button-plus {
         margin: auto 0 auto auto;
         width: 150px;
     }

@@ -1,25 +1,11 @@
 .profile__info {
-    margin: auto;
-    text-align: center;
+margin: auto;
+text-align: center;
 }
 
 @media screen and (min-width: 768px) {
 
-    .profile__info {
-        max-width: 600px;
-        margin: 0;
-        text-align: left;
-    }
-
-}
-
-
-
-@media screen and (min-width: 1280px) {
-
-    .profile__info {
-        text-align: left;
-        max-width: 600px;
-    }
-
+.profile__info {
+    margin: 0;
+    text-align: left;
 }

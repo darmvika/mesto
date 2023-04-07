@@ -1,4 +1,4 @@
-.profile__info-rectangle {
+.profile__info-redact {
     display: flex;
     text-align: center;
     padding-top: 22px;
@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 768px) {
 
-    .profile__info-rectangle {
+    .profile__info-redact {
         margin: 0;
         padding-left: 30px;
         max-width: 336px;
@@ -14,3 +14,4 @@
     }
 
 }
+

@@ -1,6 +1,6 @@
 .header {
+    width: 100%;
     margin: auto;
-    min-width: 320px;
     min-height: 56px;
     padding-top: 28px;
     border-bottom: 1px solid #545454;
