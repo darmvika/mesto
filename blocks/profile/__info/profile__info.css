@@ -1,11 +1,12 @@
 .profile__info {
-margin: auto;
-text-align: center;
+    margin: auto;
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
 
-.profile__info {
-    margin: 0;
-    text-align: left;
+    .profile__info {
+        margin: 0;
+        text-align: left;
+    }
 }
