@@ -1,4 +1,4 @@
-.content__title {
+.popup__content__title {
     width: 84%;
     margin: 0 auto;
     font-family: 'Inter';
@@ -11,7 +11,7 @@
 
 @media screen and (min-width: 768px) {
 
-    .content__title {
+    .popup__content__title {
         margin: auto;
         font-weight: 900;
         font-size: 24px;
