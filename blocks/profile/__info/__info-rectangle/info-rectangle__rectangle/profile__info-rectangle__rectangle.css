@@ -1,0 +1,32 @@
+.profile__info-rectangle__rectangle {
+    all: unset;
+    background-image: url(../../../../../ìmages/rectangle.svg);
+    width: 17px;
+    height: 17px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #FFFFFF;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.profile__info-rectangle__rectangle:hover {
+    opacity: 60%;
+}
+
+@media screen and (min-width: 1024px) {
+
+    .profile__info-rectangle__rectangle {
+        width: 24px;
+        height: 24px;
+        margin: auto
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .profile__info-rectangle__rectangle {
+        margin-top: 15px;
+        margin-left: 18px;
+    }
+}

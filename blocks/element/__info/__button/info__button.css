@@ -1,4 +1,4 @@
-.info__button{
+.info__button {
     all: unset;
     background-image: url(../../../../ìmages/element__botton.svg);
     width: 22px;
@@ -7,3 +7,7 @@
     background-repeat: no-repeat;
 }
 
+.info__button:hover {
+    color: #FFFFFF;
+    opacity: 60%;
+}

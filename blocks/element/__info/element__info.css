@@ -5,3 +5,12 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media screen and (min-width: 768px) {
+
+    .element__info{
+        max-width: 246px;
+        margin-top: 25px;
+    }
+
+}

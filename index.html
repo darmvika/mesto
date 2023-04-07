@@ -17,11 +17,13 @@
             <section class="profile">
                 <img src="./ìmages/avatar.jpg" alt="Фото аватара" class="profile__avatar">
                 <div class="profile__info">
-                    <h1 class="profile__info__title">Жак-Ив Кусто</h1>
-                    <button class="profile__info__rectangle"></button>
+                    <div class="profile__info-rectangle">
+                        <h1 class="profile__info-rectangle__title">Жак-Ив Кусто</h1>
+                        <button class="profile__info-rectangle__rectangle" type="button"></button>
+                    </div>
+                    <p class="profile__info-subtitle">Исследователь океана</p>
                 </div>
-                <p class="profile__text">Исследователь океана</p>
-                <button class="profile__button"></button>
+                <button class="profile__button" type="button"></button>
             </section>
             <section class="group">
                 <div class="element">
@@ -35,7 +37,7 @@
                     <img src="./ìmages/Гора Эльбрус.jpg" class="element__img" alt="Пейзаж">
                     <div class="element__info">
                         <h2 class="info__title">Гора Эльбрус </h2>
-                        <button class="info__button"></button>
+                        <button class="info__button info__button_active"></button>
                     </div>
                 </div>
                 <div class="element">
@@ -68,12 +70,22 @@
                 </div>
             </section>
         </main>
-
         <footer class="footer">
             <h3 class="footer__copy">&copy; 2023 Дармина Виктория</h3>
         </footer>
     </div>
+    <div class="popup">
+        <div class="popup__content popup_open">
+            <button class="popup__content__button" type="button" ></button>
+            <h2 class="popup__content__text">Редактировать профиль</h2>
+            <input class="popup__content__filed">
+            <input class="popup__content__filed">
+            <button class="popup__content__button-save" type="button">Сохранить</button>
+        </div>
+    </div>
 
+
+<script src="./pages/index.js"></script>
 </body>
 
 </html>
