@@ -1,13 +1,13 @@
-.element__info__button {
+.element__button {
     all: unset;
-    background-image: url(../../../../ìmages/element__botton.svg);
+    background-image: url(../../../ìmages/element__botton.svg);
     width: 22px;
     height: 19px;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.element__info__button:hover {
+.element__button:hover {
     color: #FFFFFF;
     opacity: 60%;
 }

@@ -1,6 +1,6 @@
 .popup__butClose {
     all: unset;
-    background-image: url(../../../../ìmages/CloseIcon.svg);
+    background-image: url(../../../ìmages/CloseIcon.svg);
     width: 20px;
     height: 20px;
     position: absolute;
