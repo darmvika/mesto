@@ -1,4 +1,4 @@
-const openPopupBtn = document.querySelector('.profile__button-redact');
+const openPopupBtn = document.querySelector('.profile__info-redact');
 const popup = document.querySelector('.popup');
 const btnClose = document.querySelector('.popup__butClose');
 const btnSave = document.querySelector('.popup__butSave');
@@ -11,19 +11,15 @@ nameInput.value = profileName.textContent;
 jobInput.value = profileJob.textContent;
 
 function openPopup() {
-    popup.classList.add('popup_opened');
+    popup.classList.add('popup__opened');
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
 }
-openPopupBtn.addEventListener('click', openPopup);
 
 function closePopup() {
-    popup.classList.remove('popup_opened');
-    
-
+    popup.classList.remove('popup__opened');
 }
-formElement.addEventListener('submit', handleFormSubmit);
-btnClose.addEventListener('click', closePopup);
+
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -33,5 +29,8 @@ function handleFormSubmit(evt) {
     profileJob.textContent = jobInput.value;
 }
 
+openPopupBtn.addEventListener('click', openPopup);
+btnClose.addEventListener('click', closePopup);
+formElement.addEventListener('submit', handleFormSubmit);
 
 
