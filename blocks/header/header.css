@@ -3,7 +3,8 @@
     margin: auto;
     min-height: 56px;
     padding-top: 28px;
-    border-bottom: 1px solid #545454;
+    border-bottom: 1px solid rgba(84, 84, 84, 1);
+
 }
 
 
@@ -12,7 +13,7 @@
 
     .header {
         width: 88%;
-        padding-top: 41px;
+        padding-top: 45px;
     }
 
 }
@@ -22,7 +23,6 @@
 
     .header {
         max-width: 880px;
-        padding-top: 41px;
     }
 
 }

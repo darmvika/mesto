@@ -1,13 +1,13 @@
 .element__button {
     all: unset;
-    background-image: url(../../../ìmages/element__botton.svg);
+    background-image: url(../../../images/element__botton.svg);
     width: 22px;
     height: 19px;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .element__button:hover {
-    color: #FFFFFF;
-    opacity: 60%;
+    opacity: 0.5;
 }

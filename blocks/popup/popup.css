@@ -1,6 +1,5 @@
 .popup{
     display: none;
-    padding-top: 123px;
     position: fixed;
     top: 0;
     left: 0;
@@ -8,14 +7,5 @@
     right: 0;
     font-family:'Inter' Arial, Helvetica, sans-serif;
     background-color: rgba(0, 0, 0, 0.5);
-
-}
-
-@media screen and (min-width: 768px) {
-
-    .popup{
-        padding-top: 195px;
-
-    }
 
 }

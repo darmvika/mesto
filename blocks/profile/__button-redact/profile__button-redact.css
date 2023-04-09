@@ -1,6 +1,7 @@
 .profile__button-redact {
     all: unset;
-    background-image: url(../../../ìmages/rectangle.svg);
+    background-size: 7.5;
+    background-image: url(../../../images/rectangle.svg);
     width: 17px;
     height: 17px;
     background-repeat: no-repeat;
@@ -8,15 +9,17 @@
     border: 1px solid #FFFFFF;
     margin-top: 8px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .profile__button-redact:hover {
     opacity: 60%;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
 
     .profile__button-redact {
+        background-size: 10px;
         width: 24px;
         height: 24px;
         margin: auto;

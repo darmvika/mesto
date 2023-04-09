@@ -1,6 +1,6 @@
 .popup__content {
     width: 282px;
-    margin: auto;
+    margin: auto auto;
     background-color: #FFFFFF;
     border-radius: 10px;
     position: relative;

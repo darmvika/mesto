@@ -3,9 +3,9 @@
     width: 238px;
     margin-left: 22px;
     height: 27px;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid rgba(84, 84, 84, 1);
     margin-top: 30px;
-    font-family: 'inter';
+    font-family: 'inter' 'Times New Roman', Times, serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

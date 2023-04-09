@@ -9,6 +9,7 @@
 @media screen and (min-width: 768px) {
 
     .profile {
+        margin-top: 36px;
         flex-direction: row;
         justify-content: space-between;
     }
@@ -20,9 +21,6 @@
 
     .profile {
         width: 68%;
-        margin-top: 60px;
-        flex-direction: row;
-        justify-content: space-between;
     }
 
 }
