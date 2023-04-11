@@ -1,12 +1,16 @@
 .profile__info {
-    margin: auto;
-    text-align: center;
+    display: flex;
+    padding-top: 22px;
+    min-width: 282px;
+    justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
 
     .profile__info {
-        margin: 0;
+        padding-left: 30px;
         text-align: left;
     }
+
 }
+

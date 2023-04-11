@@ -7,9 +7,9 @@
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid #FFFFFF;
-    margin-top: 8px;
-    margin-left: 10px;
     cursor: pointer;
+    align-self: center;
+    margin-left: 10px;
 }
 
 .profile__button-redact:hover {
@@ -22,14 +22,7 @@
         background-size: 10px;
         width: 24px;
         height: 24px;
-        margin: auto;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-
-    .profile__button-redact {
-        margin-top: 15px;
         margin-left: 18px;
+
     }
 }

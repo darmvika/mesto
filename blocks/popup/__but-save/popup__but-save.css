@@ -13,6 +13,9 @@
     border-radius: 2px;
     padding: 0;
     cursor: pointer;
+    border: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+
 }
 
 .popup__but-save:hover {
