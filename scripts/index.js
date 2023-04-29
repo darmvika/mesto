@@ -11,6 +11,7 @@ const cardPopup = document.querySelector('.popup_card');
 const elementTemplate = document.getElementById('element-template');
 const elementContainer = document.querySelector('.group')
 const closePopupNewMesto = document.querySelector('.popup__but-close_card');
+
 //Попап редактировать профиль
 
 const openPopup = () => {
@@ -91,22 +92,38 @@ const createElement = (cardsData) => {
 
     return cardElement;
 
-
-
 };
+
+const renderCards = (cardsElement) => {
+    elementContainer.prepend(cardsElement)
+
+}
 
 initialCards.forEach((card) => {
     const element = createElement(card);
-    elementContainer.appendChild(element);
+    renderCards(element);
 
 });
 
+const namedCardInput = document.querySelector('.popup__input_type_named');
+const linkCardInput = document.querySelector('.popup__input_type_link');
+const formCards = document.querySelector('.popup__input_card')
 
 
 
+const newCard = (evt) => {
+    evt.preventDefault();
+    const name = namedCardInput.value;
+    const link = linkCardInput.value;
 
+    const initialCards = {
+        name,
+        link,
+    };
 
-
+    renderCards(createElement(initialCards));
+    closeNewPopup()
+    };
 
 
 btnClose.addEventListener('click', closePopup);
@@ -114,3 +131,6 @@ openPopupBtn.addEventListener('click', openPopup);
 
 BtnPlus.addEventListener('click', openNewPopup);
 closePopupNewMesto.addEventListener('click', closeNewPopup);
+formElement.addEventListener('submit', handleFormSubmit);
+formCards.addEventListener('submit', newCard)
+
