@@ -107,7 +107,7 @@ initialCards.forEach((card) => {
 
 const namedCardInput = document.querySelector('.popup__input_type_named');
 const linkCardInput = document.querySelector('.popup__input_type_link');
-const formCards = document.querySelector('.popup__input_card')
+const formCards = document.querySelector('.popup__inputs_card')
 
 
 
