@@ -1,4 +1,4 @@
-.element__button {
+.element__like {
     all: unset;
     background-image: url(../../../images/element__botton.svg);
     width: 22px;
@@ -8,6 +8,6 @@
     cursor: pointer;
 }
 
-.element__button:hover {
+.element__like:hover {
     opacity: 0.5;
 }
