@@ -1,4 +1,4 @@
-.popup__but-save {
+.popup__save {
     all: unset;
     background-color: #000000;
     color: #FFFFFF;
@@ -18,13 +18,13 @@
 
 }
 
-.popup__but-save:hover {
+.popup__save:hover {
     opacity: 0.8;
 }
 
 @media screen and (min-width: 768px) {
 
-    .popup__but-save {
+    .popup__save {
         margin: 48px 36px 37px;
         width: 358px;
         font-size: 18px;

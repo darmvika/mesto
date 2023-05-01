@@ -1,4 +1,4 @@
-.profile__button-redact {
+.profile__redact {
     all: unset;
     background-size: 7.5;
     background-image: url(../../../images/rectangle.svg);
@@ -18,7 +18,7 @@
 
 @media screen and (min-width: 768px) {
 
-    .profile__button-redact {
+    .profile__redact {
         background-size: 10px;
         width: 24px;
         height: 24px;
