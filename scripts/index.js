@@ -93,7 +93,11 @@ initialCards.forEach((card) => {
 });
 
 //popup PROFILE
+
+
 const popupProfileOpen = () => {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
 }
 
