@@ -1,6 +1,6 @@
 const elementTemplate = document.getElementById('element-template');
 const elementContainer = document.querySelector('.group')
-const popup = document.querySelector('.popup')
+const allpopup = document.querySelector('.popup')
 const popupProfile = document.querySelector('.popup_profile')
 const buttonRedact = document.querySelector('.profile__redact')
 const buttonCloseProfile = document.querySelector('.popup__close_profile')
@@ -17,24 +17,24 @@ const formCards = document.querySelector('.popup__inputs_new-card')
 const namedCardInput = document.querySelector('.popup__input_type_named');
 const linkCardInput = document.querySelector('.popup__input_type_link');
 
+const buttonCloseCard = document.querySelector('.popup__close_card')
+const popupCard = document.querySelector('.popup_card')
+const popupCaption = document.querySelector('.card__caption');
+const popupImgs = document.querySelector('.card__image');
+
 function openPopup(popup) {
-    popup.classList.add('popup_opened')
+    allpopup.classList.add('popup_opened')
 }
 
 function closePopup(popup) {
-    popup.classList.remove('popup_opened')
+    allpopup.classList.remove('popup_opened')
 }
 
 
 // добавление из массива
 const createElement = (cardsData) => {
-    const buttonCloseCard = document.querySelector('.popup__close_card')
+
     const cardElement = elementTemplate.content.querySelector('.element').cloneNode(true);
-    const popupCaption = document.querySelector('.card__caption');
-    const popupImgs = document.querySelector('.card__image');
-    const popupCard = document.querySelector('.popup_card')
-
-
     const elementImg = cardElement.querySelector('.element__img');
     const elementTitle = cardElement.querySelector('.element__title');
     const elementRemove = cardElement.querySelector('.element__remove');
@@ -63,18 +63,11 @@ const createElement = (cardsData) => {
     const openPopupCard = () => {
         popupCaption.textContent = cardsData.name;
         popupImgs.src = cardsData.link;
+        popupImgs.alt = cardsData.name;
         openPopup(popupCard);
     }
 
-    const closePopupCard = () => {
-        closePopup(popupCard)
-    }
-    
-
-
-    elementImg.addEventListener('click', openPopupCard)
-    buttonCloseCard.addEventListener('click', closePopupCard)
-
+    elementImg.addEventListener('click', openPopupCard)   
     return cardElement;
 
 
@@ -99,6 +92,7 @@ const popupProfileOpen = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
+    
 }
 
 const popupProfileClose = () => {
@@ -111,7 +105,7 @@ const profileFormSubmit = (evt) => {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(popupProfile);
-    evt.target .reset()
+    evt.target.reset()
 
 }
 
@@ -125,6 +119,12 @@ const newCardOpen = () => {
 const newCardClose = () => {
     closePopup(newCard)
 } 
+
+// popup закрытие карточки
+
+const closePopupCard = () => {
+    closePopup(popupCard)
+}
 
 
 // Добавление новой карточки
@@ -151,6 +151,6 @@ buttonRedact.addEventListener('click', popupProfileOpen)
 buttonCloseProfile.addEventListener('click', popupProfileClose)
 formProfile.addEventListener('submit', profileFormSubmit);
 formCards.addEventListener('submit', newCardBlock)
-
+buttonCloseCard.addEventListener('click', closePopupCard)
 
 

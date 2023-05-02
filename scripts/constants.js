@@ -25,4 +25,3 @@ const initialCards = [
     }
 ]; 
 
-initialCards.push();
