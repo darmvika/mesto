@@ -1,6 +1,6 @@
 const elementTemplate = document.getElementById('element-template');
 const elementContainer = document.querySelector('.group')
-const allpopup = document.querySelector('.popup')
+const popup = document.querySelector('.popup')  // у меня есть общая функция для трех popup которая добавляет и удаляет popup_opened, в следюущих функциях указан определенный попап в котором происходит переиспользование функции удаления класса
 const popupProfile = document.querySelector('.popup_profile')
 const buttonRedact = document.querySelector('.profile__redact')
 const buttonCloseProfile = document.querySelector('.popup__close_profile')
@@ -23,11 +23,11 @@ const popupCaption = document.querySelector('.card__caption');
 const popupImgs = document.querySelector('.card__image');
 
 function openPopup(popup) {
-    allpopup.classList.add('popup_opened')
+    popup.classList.add('popup_opened')
 }
 
 function closePopup(popup) {
-    allpopup.classList.remove('popup_opened')
+    popup.classList.remove('popup_opened')
 }
 
 
@@ -67,7 +67,7 @@ const createElement = (cardsData) => {
         openPopup(popupCard);
     }
 
-    elementImg.addEventListener('click', openPopupCard)   
+    elementImg.addEventListener('click', openPopupCard)
     return cardElement;
 
 
@@ -92,11 +92,11 @@ const popupProfileOpen = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
-    
+
 }
 
 const popupProfileClose = () => {
-    
+
     closePopup(popupProfile);
 }
 
@@ -118,7 +118,7 @@ const newCardOpen = () => {
 
 const newCardClose = () => {
     closePopup(newCard)
-} 
+}
 
 // popup закрытие карточки
 
@@ -142,8 +142,8 @@ const newCardBlock = (evt) => {
 
     renderCards(createElement(initialCards));
     closePopup(newCard)
-    evt.target .reset()
-    };
+    evt.target.reset()
+};
 
 buttonPlus.addEventListener('click', newCardOpen)
 buttonCloseNewCard.addEventListener('click', newCardClose)
