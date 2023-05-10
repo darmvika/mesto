@@ -31,6 +31,7 @@ function closePopup(popup) {
 }
 
 
+
 // добавление из массива
 const createElement = (cardsData) => {
 
@@ -145,6 +146,108 @@ const newCardBlock = (evt) => {
     evt.target.reset()
 };
 
+
+
+// Валидация
+
+
+// const form = document.querySelector('.popup__inputs');
+
+const enableValidations = {
+    formSelector: '.popup__inputs',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_valid',
+    inputErrorClass: 'popup__input-error',
+    //errorClass: 'popup__error_visible'
+};
+
+
+
+
+
+//кнопка cохранить профиль
+
+
+const enableValidation = ({ formSelector, ...rest }) => {
+    const forms = Array.from(document.querySelectorAll(formSelector));
+    forms.forEach(form => {
+        form.addEventListener('submit', (evt) => {
+            evt.preventDefault()
+        })
+        setEventListeners(form, rest)
+    })
+}
+
+const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest }) => {
+    const formInputs = Array.from(form.querySelectorAll(inputSelector));
+    const formButton = form.querySelector(submitButtonSelector);
+    dissabledButton(formButton)
+    formInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            checkInputsValidity(input)
+            if (hasInvalidInput(formInputs)) {
+                dissabledButton(formButton)
+            } else {
+                enabledButton(formButton)
+            }
+        })
+    })
+
+}
+
+const checkInputsValidity = (input) => {
+    const currentInputContainer = document.querySelector(`#${input.id}-error`)
+    console.log(currentInputContainer)
+    if (input.checkValidity()) {
+        currentInputContainer.textContent = ''
+    } else {
+        currentInputContainer.textContent = input.validationMessage
+    }
+}
+
+const hasInvalidInput = (formInputs) => {
+    return formInputs.some(item => !item.validity.valid)
+
+}
+
+const buttonSave = document.querySelector('.popup__save')
+
+const enabledButton = (button) => {
+    buttonSave.classList.remove('popup__save_invalid')
+    buttonSave.classList.add('popup__save_valid')
+    buttonSave.setAttribute('disabled', true)
+
+}
+
+const dissabledButton = (button) => {
+    buttonSave.classList.add('popup__save_invalid')
+    buttonSave.classList.remove('popup__save_valid')
+    buttonSave.removeAttribute('disabled', true)
+}
+
+enableValidation(enableValidations)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 buttonPlus.addEventListener('click', newCardOpen)
 buttonCloseNewCard.addEventListener('click', newCardClose)
 buttonRedact.addEventListener('click', popupProfileOpen)
@@ -152,5 +255,3 @@ buttonCloseProfile.addEventListener('click', popupProfileClose)
 formProfile.addEventListener('submit', profileFormSubmit);
 formCards.addEventListener('submit', newCardBlock)
 buttonCloseCard.addEventListener('click', closePopupCard)
-
-

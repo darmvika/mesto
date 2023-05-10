@@ -1,6 +1,6 @@
 .popup__save {
     all: unset;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 1);
     color: #FFFFFF;
     width: 238px;
     margin: 45px 22px 25px;
