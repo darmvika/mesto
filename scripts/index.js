@@ -1,6 +1,7 @@
+
 const elementTemplate = document.getElementById('element-template');
 const elementContainer = document.querySelector('.group')
-const popup = document.querySelector('.popup')  // у меня есть общая функция для трех popup которая добавляет и удаляет popup_opened, в следюущих функциях указан определенный попап в котором происходит переиспользование функции удаления класса
+const popupList = Array.from(document.querySelectorAll('.popup'));
 const popupProfile = document.querySelector('.popup_profile')
 const buttonRedact = document.querySelector('.profile__redact')
 const buttonCloseProfile = document.querySelector('.popup__close_profile')
@@ -22,15 +23,32 @@ const popupCard = document.querySelector('.popup_card')
 const popupCaption = document.querySelector('.card__caption');
 const popupImgs = document.querySelector('.card__image');
 
-function openPopup(popup) {
-    popup.classList.add('popup_opened')
+const handlePopupClose = (evt) => {
+    const isOverlay = evt.target.classList.contains('popup');
+    const isCloseBtn = evt.target.classList.contains('popup__close');
+
+    if (isOverlay || isCloseBtn) {
+        popupList.forEach(closePopup);
+    }
+};
+
+const closePressTheEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        popupList.forEach(closePopup);
+    }
 }
 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened')
+const openPopup = (popupElement) => {
+    popupElement.classList.add('popup_opened');
+    document.addEventListener('click', handlePopupClose);
+    document.addEventListener('keydown', closePressTheEsc);
 }
 
-
+const closePopup = (popupElement) => {
+    popupElement.classList.remove('popup_opened');
+    document.removeEventListener('click', handlePopupClose);
+    document.removeEventListener('keydown', closePressTheEsc);
+}
 
 // добавление из массива
 const createElement = (cardsData) => {
@@ -97,7 +115,6 @@ const popupProfileOpen = () => {
 }
 
 const popupProfileClose = () => {
-
     closePopup(popupProfile);
 }
 
@@ -107,7 +124,6 @@ const profileFormSubmit = (evt) => {
     profileJob.textContent = jobInput.value;
     closePopup(popupProfile);
     evt.target.reset()
-
 }
 
 
@@ -121,11 +137,14 @@ const newCardClose = () => {
     closePopup(newCard)
 }
 
+
 // popup закрытие карточки
 
 const closePopupCard = () => {
     closePopup(popupCard)
 }
+
+
 
 
 // Добавление новой карточки
@@ -145,106 +164,6 @@ const newCardBlock = (evt) => {
     closePopup(newCard)
     evt.target.reset()
 };
-
-
-
-// Валидация
-
-
-// const form = document.querySelector('.popup__inputs');
-
-const enableValidations = {
-    formSelector: '.popup__inputs',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_valid',
-    inputErrorClass: 'popup__input-error',
-    //errorClass: 'popup__error_visible'
-};
-
-
-
-
-
-//кнопка cохранить профиль
-
-
-const enableValidation = ({ formSelector, ...rest }) => {
-    const forms = Array.from(document.querySelectorAll(formSelector));
-    forms.forEach(form => {
-        form.addEventListener('submit', (evt) => {
-            evt.preventDefault()
-        })
-        setEventListeners(form, rest)
-    })
-}
-
-const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest }) => {
-    const formInputs = Array.from(form.querySelectorAll(inputSelector));
-    const formButton = form.querySelector(submitButtonSelector);
-    dissabledButton(formButton)
-    formInputs.forEach(input => {
-        input.addEventListener('input', () => {
-            checkInputsValidity(input)
-            if (hasInvalidInput(formInputs)) {
-                dissabledButton(formButton)
-            } else {
-                enabledButton(formButton)
-            }
-        })
-    })
-
-}
-
-const checkInputsValidity = (input) => {
-    const currentInputContainer = document.querySelector(`#${input.id}-error`)
-    console.log(currentInputContainer)
-    if (input.checkValidity()) {
-        currentInputContainer.textContent = ''
-    } else {
-        currentInputContainer.textContent = input.validationMessage
-    }
-}
-
-const hasInvalidInput = (formInputs) => {
-    return formInputs.some(item => !item.validity.valid)
-
-}
-
-const buttonSave = document.querySelector('.popup__save')
-
-const enabledButton = (button) => {
-    buttonSave.classList.remove('popup__save_invalid')
-    buttonSave.classList.add('popup__save_valid')
-    buttonSave.setAttribute('disabled', true)
-
-}
-
-const dissabledButton = (button) => {
-    buttonSave.classList.add('popup__save_invalid')
-    buttonSave.classList.remove('popup__save_valid')
-    buttonSave.removeAttribute('disabled', true)
-}
-
-enableValidation(enableValidations)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -37,6 +37,7 @@
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/input-container/input-container.css);
 @import url(../blocks/popup/__span-error/popup__span-error.css);
+@import url(../blocks/popup/__span-error/__span-error_valid/__span-error_valid.css);
 
 
 

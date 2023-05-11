@@ -1,10 +1,10 @@
 .popup__span-error {
-    margin: 0;
-    width: 358px;
-    min-height: 30px;
-    font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #FF0000;
+    font-size: .75em;
+    line-height: 1.15;
+    color: #f00;
+    transition: .3s;
+    min-height: 30px;
+    padding: 3px 0;
+    margin-left: 36px;
 }
