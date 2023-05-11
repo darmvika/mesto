@@ -9,10 +9,6 @@ const enableValidations = {
 
 
 
-
-//кнопка cохранить профиль
-
-
 const enableValidation = ({ formSelector, ...rest }) => {
     const forms = Array.from(document.querySelectorAll(formSelector));
     forms.forEach(form => {
@@ -35,7 +31,7 @@ const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest 
                 enabledButton(formButton)
             } else {
                 dissabledButton(formButton)
-                
+
             }
         })
     })
@@ -52,6 +48,7 @@ const checkInputsValidity = (input) => {
     }
 
 }
+
 
 const hasInvalidInput = (formInputs) => {
     return formInputs.some(item => !item.validity.valid)
