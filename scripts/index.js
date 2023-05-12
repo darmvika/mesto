@@ -111,7 +111,6 @@ const popupProfileOpen = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
-
 }
 
 const popupProfileClose = () => {
@@ -123,7 +122,6 @@ const profileFormSubmit = (evt) => {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(popupProfile);
-    evt.target.reset()
 }
 
 
@@ -134,6 +132,7 @@ const newCardOpen = () => {
 }
 
 const newCardClose = () => {
+    dissabledButton(newCard.querySelector('.popup__save_new-card'), { inactiveButtonClass: 'popup__save_invalid' });
     closePopup(newCard)
 }
 
@@ -168,7 +167,6 @@ const newCardBlock = (evt) => {
 
 
 buttonPlus.addEventListener('click', newCardOpen)
-buttonCloseNewCard.addEventListener('click', newCardClose)
 buttonRedact.addEventListener('click', popupProfileOpen)
 buttonCloseProfile.addEventListener('click', popupProfileClose)
 formProfile.addEventListener('submit', profileFormSubmit);

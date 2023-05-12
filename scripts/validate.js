@@ -1,7 +1,7 @@
 const enableValidations = {
     formSelector: '.popup__inputs',
     inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__close',
+    submitButtonSelector: '.popup__save',
     inactiveButtonClass: 'popup__save_invalid',
     inputErrorClass: 'popup__inputs_invalid',
     errorClass: 'popup__span-error'
@@ -31,7 +31,6 @@ const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest 
                 enabledButton(formButton)
             } else {
                 dissabledButton(formButton)
-
             }
         })
     })
@@ -58,16 +57,14 @@ const hasInvalidInput = (formInputs) => {
 const buttonSave = document.querySelector('.popup__save')
 
 const enabledButton = (button) => {
-    buttonSave.classList.remove('popup__save_valid')
-    buttonSave.classList.add('popup__save_invalid')
-    buttonSave.setAttribute('disabled', true)
+    button.classList.add('popup__save_invalid')
+    button.setAttribute('disabled', true)
 
 }
 
 const dissabledButton = (button) => {
-    buttonSave.classList.add('popup__save_valid')
-    buttonSave.classList.remove('popup__save_invalid')
-    buttonSave.removeAttribute('disabled', true)
+    button.classList.remove('popup__save_invalid') //Не особо поняла как должно быть написано при любых исправлениях перестает работать
+    button.removeAttribute('disabled', true)
 }
 
 enableValidation(enableValidations)
