@@ -57,13 +57,13 @@ const hasInvalidInput = (formInputs) => {
 const buttonSave = document.querySelector('.popup__save')
 
 const enabledButton = (button) => {
-    button.classList.add('popup__save_invalid')
+    button.classList.add(enableValidations.inactiveButtonClass)
     button.setAttribute('disabled', true)
 
 }
 
 const dissabledButton = (button) => {
-    button.classList.remove('popup__save_invalid') //Не особо поняла как должно быть написано при любых исправлениях перестает работать
+    button.classList.remove(enableValidations.inactiveButtonClass) //Не особо поняла как должно быть написано при любых исправлениях перестает работать
     button.removeAttribute('disabled', true)
 }
 

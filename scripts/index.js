@@ -132,7 +132,7 @@ const newCardOpen = () => {
 }
 
 const newCardClose = () => {
-    dissabledButton(newCard.querySelector('.popup__save_new-card'), { inactiveButtonClass: 'popup__save_invalid' });
+    dissabeledButton(newCard.querySelector('.popup__save_new-card'), { inactiveButtonClass: 'popup__save_invalid' });
     closePopup(newCard)
 }
 
