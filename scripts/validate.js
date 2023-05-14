@@ -23,14 +23,14 @@ const enableValidation = ({ formSelector, ...rest }) => {
 const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest }) => {
     const formInputs = Array.from(form.querySelectorAll(inputSelector));
     const formButton = form.querySelector(submitButtonSelector);
-    dissabledButton(formButton)
+    dissabledButton(formButton, rest)
     formInputs.forEach(input => {
         input.addEventListener('input', () => {
             checkInputsValidity(input)
             if (hasInvalidInput(formInputs)) {
-                enabledButton(formButton)
+                enabledButton(formButton, rest)
             } else {
-                dissabledButton(formButton)
+                dissabledButton(formButton, rest)
             }
         })
     })
@@ -56,14 +56,14 @@ const hasInvalidInput = (formInputs) => {
 
 const buttonSave = document.querySelector('.popup__save')
 
-const enabledButton = (button) => {
-    button.classList.add(enableValidations.inactiveButtonClass)
+const enabledButton = (button, {inactiveButtonClass}) => {
+    button.classList.add(inactiveButtonClass)
     button.setAttribute('disabled', true)
 
 }
 
-const dissabledButton = (button) => {
-    button.classList.remove(enableValidations.inactiveButtonClass) //Не особо поняла как должно быть написано при любых исправлениях перестает работать
+const dissabledButton = (button, {inactiveButtonClass}) => {
+    button.classList.remove(inactiveButtonClass)
     button.removeAttribute('disabled', true)
 }
 

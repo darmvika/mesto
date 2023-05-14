@@ -89,7 +89,6 @@ const createElement = (cardsData) => {
     elementImg.addEventListener('click', openPopupCard)
     return cardElement;
 
-
 };
 
 
@@ -106,16 +105,13 @@ initialCards.forEach((card) => {
 
 //popup PROFILE
 
-
 const popupProfileOpen = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
 }
 
-const popupProfileClose = () => {
-    closePopup(popupProfile);
-}
+
 
 const profileFormSubmit = (evt) => {
     evt.preventDefault();
@@ -128,22 +124,9 @@ const profileFormSubmit = (evt) => {
 //popup new-card
 
 const newCardOpen = () => {
+    enabledButton(newCard.querySelector('.popup__save_new-card'), { inactiveButtonClass: 'popup__save_invalid' });
     openPopup(newCard)
 }
-
-const newCardClose = () => {
-    dissabeledButton(newCard.querySelector('.popup__save_new-card'), { inactiveButtonClass: 'popup__save_invalid' });
-    closePopup(newCard)
-}
-
-
-// popup закрытие карточки
-
-const closePopupCard = () => {
-    closePopup(popupCard)
-}
-
-
 
 
 // Добавление новой карточки
@@ -168,7 +151,5 @@ const newCardBlock = (evt) => {
 
 buttonPlus.addEventListener('click', newCardOpen)
 buttonRedact.addEventListener('click', popupProfileOpen)
-buttonCloseProfile.addEventListener('click', popupProfileClose)
 formProfile.addEventListener('submit', profileFormSubmit);
 formCards.addEventListener('submit', newCardBlock)
-buttonCloseCard.addEventListener('click', closePopupCard)
