@@ -26,8 +26,8 @@ const popupCard = document.querySelector('.popup_card')
 const popupCaption = document.querySelector('.card__caption');
 const popupImgs = document.querySelector('.card__image');
 
-const validationConfig = {
-    formSelector: ".popup__form",
+const config = {
+    formSelector: ".popup__inputs",
     inputSelector: ".popup__input", 
     errorSelectorTemplate: ".popup__span-error", 
     submitButtonSelector: ".popup__save",
@@ -38,11 +38,11 @@ const validationConfig = {
 
 
 //создаем экземпляр класса FormValidator для попапа редактирования и запускаем валидации
-const formProfileInfoValidator = new FormValidator(validationConfig, formProfile);
+const formProfileInfoValidator = new FormValidator(config, formProfile);
 formProfileInfoValidator.enableValidation();
 
 //создаем экземпляр класса FormValidator для попапа добавления карточки и запускаем валидации
-const formAddCardValidator = new FormValidator(validationConfig, formCards);
+const formAddCardValidator = new FormValidator(config, formCards);
 formAddCardValidator.enableValidation();
 
 
@@ -112,14 +112,14 @@ initialCards.forEach(card => {
 
 //popup PROFILE
 
-const popupProfileOpen = () => {
+const openPopupProfile = () => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupProfile)
 }
 
 
-const profileFormSubmit = (evt) => {
+const submitProfileForm = (evt) => {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
@@ -130,7 +130,9 @@ const profileFormSubmit = (evt) => {
 
 //popup с добавлением карточки
 
-const newCardOpen = () => {
+const openNewCard = () => {
+    formCards.reset();
+    formAddCardValidator.resetErrorInput();
     openPopup(newCard)
 }
 
@@ -142,16 +144,18 @@ formCards.addEventListener('submit', (evt) => {
 evt.preventDefault();
 const cardDataNameUrl = {name: namedCardInput.value, link: linkCardInput.value};
 renderCards(listsElement, createNewCard(cardDataNameUrl))
+evt.target.reset();
+evt.submitter.classList.add('popup__save_invalid')
+evt.submitter.disabled = true;
 closePopup(newCard)
-evt.target.reset()
 })
 
 
 
 
-buttonPlus.addEventListener('click', newCardOpen)
-buttonRedact.addEventListener('click', popupProfileOpen)
-formProfile.addEventListener('submit', profileFormSubmit);
+buttonPlus.addEventListener('click', openNewCard)
+buttonRedact.addEventListener('click', openPopupProfile)
+formProfile.addEventListener('submit', submitProfileForm);
 // formCards.addEventListener('submit', newCardBlock)
 
 
