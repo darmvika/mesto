@@ -4,14 +4,15 @@
     line-height: 1.15;
     color: #f00;
     transition: .3s;
+    min-height: 30px;
     padding: 3px 0;
-    margin-left: 22px;
+    margin-left: 38px;
 }
 
 @media screen and (min-width: 768px) {
 
     .popup__span-error {
-        margin-left: 36px;
+        width: 238px;
     }
 
 }

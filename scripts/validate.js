@@ -1,70 +1,77 @@
-const enableValidations = {
-    formSelector: '.popup__inputs',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save',
-    inactiveButtonClass: 'popup__save_invalid',
-    inputErrorClass: 'popup__inputs_invalid',
-    errorClass: 'popup__span-error'
-};
+//не понимаю почему ошибка появляется только под первым инпутом
 
-
-
-const enableValidation = ({ formSelector, ...rest }) => {
-    const forms = Array.from(document.querySelectorAll(formSelector));
-    forms.forEach(form => {
-        form.addEventListener('submit', (evt) => {
-            evt.preventDefault()
-        })
-        setEventListeners(form, rest)
-
-    })
-}
-
-const setEventListeners = (form, { inputSelector, submitButtonSelector, ...rest }) => {
-    const formInputs = Array.from(form.querySelectorAll(inputSelector));
-    const formButton = form.querySelector(submitButtonSelector);
-    dissabledButton(formButton, rest)
-    formInputs.forEach(input => {
-        input.addEventListener('input', () => {
-            checkInputsValidity(input)
-            if (hasInvalidInput(formInputs)) {
-                enabledButton(formButton, rest)
-            } else {
-                dissabledButton(formButton, rest)
-            }
-        })
-    })
-
-}
-
-const checkInputsValidity = (input) => {
-    const currentInputContainer = document.querySelector(`#${input.id}-error`)
-    console.log(currentInputContainer)
-    if (input.checkValidity()) {
-        currentInputContainer.textContent = ''
-    } else {
-        currentInputContainer.textContent = input.validationMessage
+export default class FormValidator {
+    constructor(config, form) {
+        this._form = form;
+        this._inputSelector = config.inputSelector;
+        this._errorSelectorTemplate = config.errorSelectorTemplate;
+        this._submitButtonSelector = config.submitButtonSelector;
+        this._disabledButtonClass = config.disabledButtonClass;
+        this._inputErrorClass = config.inputErrorClass;
+        this._textErrorClass = config.textErrorClass;
+        this._button = form.querySelector(this._submitButtonSelector);
+        this._inputList = form.querySelectorAll(this._inputSelector);
+        
     }
 
+    _showInputError(errorTextElement, input) {
+        input.classList.add(this._inputErrorClass);
+        errorTextElement.textContent = input.validationMessage;
+        errorTextElement.classList.add(this._textErrorClass)
+
+    }
+
+    _hideInputError(errorTextElement, input) {
+        input.classList.remove(this._inputErrorClass);
+        errorTextElement.textContent = '';
+        errorTextElement.classList.remove(this._textErrorClass)
+    }
+
+    _hasInvalidInput() {
+        return Array.from(this._inputList).some((input) => !input.validity.valid);
+    }
+
+    _enabledButton() {
+        this._button.classList.remove(this._disabledButtonClass);
+        this._button.removeAttribute('disabled');
+    }
+
+    _disabledButton() {
+        this._button.classList.add(this._disabledButtonClass);
+        this._button.setAttribute('disabled', true);
+    }
+
+    _toggleButton() {
+        this._hasInvalidInput() ? this._disabledButton() : this._enabledButton()
+    }
+
+    _checkInputValidity(input) {
+        const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`)
+        input.validity.valid ? this._hideInputError(errorTextElement, input) : this._showInputError(errorTextElement, input)
+
+    }
+
+    _setEventListener() {
+        this._inputList.forEach((input) => {
+            input.addEventListener("input", () => {
+                this._checkInputValidity(input);
+                this._toggleButton()
+
+            });
+        })
+    }
+
+    enableValidation() {
+        this._setEventListener();
+    };
+
+    resetErrorInput() {
+        this._inputList.forEach((input) => {
+            const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`)
+            if (!input.validity.valid) {
+                this._hideInputError(errorTextElement, input)
+            }
+        })
+        this._disabledButton()
+    }
 }
-
-
-const hasInvalidInput = (formInputs) => {
-    return formInputs.some(item => !item.validity.valid)
-
-}
-
-const buttonSave = document.querySelector('.popup__save')
-
-const enabledButton = (button, {inactiveButtonClass}) => {
-    button.classList.add(inactiveButtonClass)
-    button.setAttribute('disabled', true)
-
-}
-
-const dissabledButton = (button, {inactiveButtonClass}) => {
-    button.classList.remove(inactiveButtonClass)
-    button.removeAttribute('disabled', true)
-}
-
-enableValidation(enableValidations)
