@@ -14,11 +14,11 @@ const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
-const formProfile = document.querySelector('.popup__form_profile');
+const formProfile = document.querySelector('.popup__inputs_profile');
 
 const newCard = document.querySelector('.popup_new-card');
 const buttonPlus = document.querySelector('.profile__plus')
-const formCards = document.querySelector('.popup__form_new-card')
+const formCards = document.querySelector('.popup__inputs_new-card')
 const namedCardInput = document.querySelector('.popup__input_type_named');
 const linkCardInput = document.querySelector('.popup__input_type_link');
 
