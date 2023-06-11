@@ -1,11 +1,12 @@
 export default class Card{ 
-    constructor(cardsData, selectorTemplate, openPopupCard){
-        this._cardsData = cardsData;
-        this._link = cardsData.link;
-        this._name = cardsData.name;
+    constructor(cardData, selectorTemplate, openPopupCard){
+        this._cardData = cardData;
+        this._link = cardData.link;
+        this._name = cardData.name;
         this._selectorTemplate = selectorTemplate;
         this._openPopupCard = openPopupCard;
     }
+    
     _getTemplateClone(){
         return document.querySelector(this._selectorTemplate).content.querySelector('.element').cloneNode(true);
     }
@@ -16,10 +17,11 @@ export default class Card{
 
     _handleDeleteElement = () => {
         this._cloneElement.remove();
+        this._cloneElement = null;
     }
 
     _handleOpenCardPopup = () => {
-        this._openPopupCard(this._cardsData)
+        this._openPopupCard(this._cardData)
     }
 
     _setEventListener(){

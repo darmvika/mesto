@@ -1,5 +1,3 @@
-//не понимаю почему ошибка появляется только под первым инпутом
-
 export default class FormValidator {
     constructor(config, form) {
         this._inputSelector = config.inputSelector;
