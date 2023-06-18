@@ -31,7 +31,7 @@ export default class FormValidator {
     }
 
     _hasInvalidInput() {
-        return Array.from(this._inputList).some((input) => !input.validity.valid);
+        return Array.from(this._inputList).some((input) => !input.validity.valid);        
     }
 
     _enabledButton() {
@@ -79,3 +79,4 @@ export default class FormValidator {
         this._disabledButton()
     }
 }
+
