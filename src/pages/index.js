@@ -66,7 +66,7 @@ const popapAddCard = new PopupWithForm(popupNewCardSelector, (data) => {
 })
 
 buttonPlus.addEventListener('click', () => {
-  // formAddCardValidator.resetErrorInput()   // по идее эта функция отвечает за блокировку формы но с ней появляется ошибка, не понимаю в чем причина
+  formAddCardValidator.resetErrorInput()
   popapAddCard.open()
 }, )
 

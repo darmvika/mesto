@@ -71,7 +71,7 @@ export default class FormValidator {
 
     resetErrorInput() {
         this._inputList.forEach((input) => {
-            const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`)
+            const errorTextElement = this._form.querySelector(`#${input.id}-error`)
             if (!input.validity.valid) {
                 this._hideInputError(errorTextElement, input)
             }
