@@ -30,7 +30,8 @@ const buttonRedact = document.querySelector('.profile__redact')
 const buttonPlus = document.querySelector('.profile__plus')
 
 const formProfile = document.querySelector('.popup__inputs_profile');
-const formCards = document.querySelector('.popup__inputs_new-card')
+const formCards = document.querySelector('.popup__inputs_new-card');
+const formAvatar = document.querySelector('.popup__inputs_avatar')
 
 const selectorTemplate = '#element-template';
 const popupCardSelector = '.popup_card'
@@ -42,6 +43,7 @@ const popupNewCardSelector = '.popup_new-card';
 const configInfo = {
     profilenameSelector: '.profile__title',
     profileJobSelector: '.profile__subtitle',
+    profileAvatarSelector: '.profile__avatar'
 }
 
 const config = {
@@ -60,6 +62,7 @@ export {
     buttonPlus,
     formProfile,
     formCards,
+    formAvatar,
     selectorTemplate,
     popupCardSelector,
     listsElementSelector,

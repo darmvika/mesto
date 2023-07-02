@@ -1,10 +1,17 @@
 .profile__avatar-update {
-  all: unset;
   background-image: url(../../../images/avatar-update.png);
-  cursor: pointer;
-  background-repeat: no-repeat;
+  background-size: 26px 26px;
+  background-color: #000;
   background-position: center;
-  width: 120px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: none;
   height: 120px;
-  
+  width: 120px;
+  transition: opacity 0.3s ease-in-out;
+  margin-right: 30px;
+  padding: 0px ;
+  align-self: center;
+  margin: 0;
 }
+
