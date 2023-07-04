@@ -63,8 +63,8 @@ const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ card, cardId
 })
 
 function createNewCard(element) {
-  const card = new Card(element, selectorTemplate, popupImage.open, deletePopupCard.open, (likeIconElement, cardId) => {
-    if (likeIconElement.classList.contains('element__like_active')) {
+  const card = new Card(element, selectorTemplate, popupImage.open, deletePopupCard.open, (isLiked, cardId) => {
+    if (isLiked) {
       api.deleteLike(cardId)
         .then(res => {
           card.toggelLike(res.likes);
