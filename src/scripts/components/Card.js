@@ -3,7 +3,7 @@ export default class Card {
     this._cardData = cardData;
     this._link = cardData.link;
     this._name = cardData.name;
-    this._myId = cardData.myid;
+    this._myId = cardData.myId;
     this._ownerId = cardData.owner._id;
     this._cardId = cardData._id;
     this._selectorTemplate = selectorTemplate;

@@ -66,7 +66,6 @@ export default class FormValidator {
         this._button = this._form.querySelector(this._submitButtonSelector);
         this._inputList = this._form.querySelectorAll(this._inputSelector);
         this._setEventListener()
-        // this._setEventListener();
     };
 
     resetErrorInput() {

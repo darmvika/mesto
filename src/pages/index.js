@@ -17,15 +17,14 @@ import {
   formAvatar,
   selectorTemplate,
   popupCardSelector,
+  popupAvatarSelector,
+  popupDeleteSelector,
   listsElementSelector,
   popupProfileSelector,
   popupNewCardSelector,
   configInfo,
   config
 } from '../scripts/utils/constants.js'
-import { data } from 'autoprefixer';
-
-
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
@@ -34,12 +33,6 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
-
-
-
-
-const popupAvatarSelector = '.popup_update-avatar'
-const popupDeleteSelector = '.popup_confirm'
 
 //создаем экземпляр класса FormValidator для попапа редактирования и запускаем валидации
 const formProfileInfoValidator = new FormValidator(config, formProfile);
@@ -58,13 +51,14 @@ const userInfo = new UserInfo(configInfo);
 const popupImage = new PopupWithImage(popupCardSelector);
 
 const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ card, cardId }) => {
+  deletePopupCard.renderLoading(true);
   api.deleteCard(cardId)
     .then(() => {
       card.removeCard()
       deletePopupCard.close()
     })
     .catch((error) => console.error(`Ошибка при снятии лайка ${error}`))
-    .finally()
+    .finally(() => deletePopupCard.renderLoading(false))
 
 })
 
@@ -83,9 +77,9 @@ function createNewCard(element) {
           card.toggelLike(res.likes);
         })
         .catch((error) => console.error(`Ошибка при добавлении лайка ${error}`))
-
     }
   });
+
   return card.createCard()
 }
 
@@ -100,9 +94,10 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
   api.setUserInfo(data)
     .then(res => {
       userInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar })
+      popupProfile.close()
     })
     .catch((error) => console.error(`Ошибка при редактировании профиля ${error}`))
-    .finally()
+    .finally(() => popupProfile.setupDefaultText())
 })
 
 buttonRedact.addEventListener('click', () => {
@@ -110,20 +105,18 @@ buttonRedact.addEventListener('click', () => {
   popupProfile.open();
 });
 
-buttonRedact.addEventListener('click', () => {
-  popupProfile.open()
-})
+
 
 // Добавление новой карточки
 const popapAddCard = new PopupWithForm(popupNewCardSelector, (data) => {
-  Promise.all([api.getProfileInfo(), api.addCard(data)])
-    .then(([resDataUser, resDataCard]) => {
-      resDataCard.myid = resDataUser._id;
-      section.addItemPrepend(createNewCard(resDataCard))
+  api.addCard(data)
+    .then((res) => {
+      res.myId = res.owner._id;
+      section.addItemPrepend(createNewCard(res))
       popapAddCard.close()
     })
     .catch((error) => console.error(`Ошибка при добавлении карточки ${error}`))
-    .finally();
+    .finally(() => popapAddCard.setupDefaultText());
 })
 
 
@@ -137,16 +130,17 @@ buttonPlus.addEventListener('click', () => {
 const popupEditAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
   api.setNewAvatar(data)
     .then(res => {
-      console.log(res)
       userInfo.setUserInfo({ name: res.name, job: res.about, avatar: res.avatar })
+      popupEditAvatar.close()
     })
     .catch((error) => console.error(`Ошибка при обновлении аватара ${error}`))
-    .finally()
-  // popupEditAvatar.close()
+    .finally(() => popupEditAvatar.setupDefaultText());
+
+
 })
 
 document.querySelector('.profile__avatar-update').addEventListener('click', () => {
-  // formAvatarValidator.resetErrorInput()
+  formAvatarValidator.resetErrorInput()
   popupEditAvatar.open()
 })
 

@@ -38,6 +38,8 @@ const popupCardSelector = '.popup_card'
 const listsElementSelector = '.group';
 const popupProfileSelector = '.popup_profile'
 const popupNewCardSelector = '.popup_new-card';
+const popupAvatarSelector = '.popup_update-avatar'
+const popupDeleteSelector = '.popup_confirm'
 
 
 const configInfo = {
@@ -65,6 +67,8 @@ export {
     formAvatar,
     selectorTemplate,
     popupCardSelector,
+    popupAvatarSelector,
+    popupDeleteSelector,
     listsElementSelector,
     popupProfileSelector,
     popupNewCardSelector,
